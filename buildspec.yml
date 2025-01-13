@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk11  # Use OpenJDK 11 for building
+    commands:
+      - echo Installing Maven dependencies...
+      - mvn install -DskipTests  # Install dependencies, skipping tests to save time
+
+  build:
+    commands:
+      - echo Building the Spring Boot application...
+      - mvn clean package -DskipTests  # Package the application
+
+  post_build:
+    commands:
+      - echo Build complete.
+      - mv target/*.jar build/  # Move the generated JAR to the build directory
+
+artifacts:
+  files:
+    - build/*.jar  # Specify the JAR file to be used in subsequent stages
+  discard-paths: yes  # Don't include directory structure in output artifact
