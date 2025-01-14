@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: openjdk11  # Use OpenJDK 11 for building
+      java: openjdk17  # Use OpenJDK 11 for building
     commands:
       - echo Installing Maven dependencies...
       - mvn install -DskipTests  # Install dependencies, skipping tests to save time
